@@ -8,11 +8,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import net.bytebuddy.utility.privilege.GetSystemPropertyAction;
+import utilities.AbstractMethods;
 
-public class CreateAccount {
+public class CreateAccount extends AbstractMethods{
 
 	WebDriver driver;
 	public CreateAccount(WebDriver driver){
+		super(driver);
 		this.driver= driver;
 		PageFactory.initElements(driver,this);
 	}
@@ -27,16 +29,19 @@ public class CreateAccount {
 	@FindBy(xpath="//span[text()='My Account']") WebElement MyAccount;
 	
 	public void createAccountLink() {
+		implicitlyWaitMethod();
 	CreateAccountLink.click();
 	String title= driver.getTitle();
 	System.out.println(title);
 
 }
 	public void enterName(String fname,String lname) {
+		implicitlyWaitMethod();
 		firstname.sendKeys(fname);
 		lastname.sendKeys(lname);
 	}
 	public void enterCredentials(String email,String pword) {
+		implicitlyWaitMethod();
 		email_address.sendKeys(email);
 		password.sendKeys(pword);
 		passwordconfirmation.sendKeys(pword);
